@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Security Analysis</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="card">
+      <h1>Security Analysis</h1>
+
+      <section class="security-note">
+        <h2>1) How vulnerabilities could affect this login system</h2>
+        <p>
+          If SQL Injection existed in login queries, an attacker could bypass authentication or read user data.
+          If broken authentication existed (weak password handling, predictable sessions), attackers could take over accounts.
+          This would allow unauthorized access to protected pages and student activity.
+        </p>
+      </section>
+
+      <section class="security-note">
+        <h2>2) What happens if security measures are not implemented</h2>
+        <p>
+          Without password hashing, leaked credentials would expose real passwords immediately.
+          Without input validation, malicious payloads could reach backend logic and increase injection risk.
+          Without safe error handling, attackers could learn system behavior (valid users, backend details) and craft targeted attacks.
+        </p>
+      </section>
+
+      <section class="security-note">
+        <h2>3) How implemented features help prevent attacks</h2>
+        <ul>
+          <li><strong>Hashed passwords (bcrypt):</strong> protects stored credentials even if data is leaked.</li>
+          <li><strong>Input validation:</strong> rejects suspicious username/password formats before processing.</li>
+          <li><strong>Generic login errors:</strong> prevents user enumeration and avoids exposing internals.</li>
+          <li><strong>Session-based access control:</strong> protects the dashboard and lesson link after login only.</li>
+        </ul>
+      </section>
+
+      <p class="analysis-link"><a href="/dashboard">Back to Dashboard</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson Access</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="card">
+      <h1>Login Successful</h1>
+      <p>You are now authenticated. Complete this selected WebGoat lesson:</p>
+      <p>
+        <a href="https://owasp.org/www-project-webgoat/" target="_blank" rel="noopener noreferrer">
+          WebGoat Lesson: SQL Injection (Intro Concept)
+        </a>
+      </p>
+
+      <section class="security-note">
+        <h2>Why this login is more secure</h2>
+        <ul>
+          <li>Passwords are stored as hashes, not plain text, so leaks are less damaging.</li>
+          <li>Hashing with bcrypt-style logic slows brute-force attacks.</li>
+          <li>Input validation blocks malformed/malicious login values early.</li>
+          <li>Generic login errors avoid exposing sensitive system details.</li>
+        </ul>
+      </section>
+      <p class="analysis-link">
+        <a href="/security-analysis.html">Read Security Analysis (Required Explanation)</a>
+      </p>
+
+      <button id="logoutBtn" type="button">Log Out</button>
+    </main>
+
+    <script>
+      document.getElementById("logoutBtn").addEventListener("click", async () => {
+        await fetch("/logout", { method: "POST" });
+        window.location.href = "/login.html";
+      });
+    </script>
+  </body>
+</html>
